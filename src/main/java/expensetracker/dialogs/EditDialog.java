@@ -13,10 +13,20 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 
+/**
+ * Dialog responsible for editing already existing transactions.
+ * Shown after double-clicking a transaction in the table.
+ */
 public class EditDialog extends JDialog {
     MainForm main;
     Transaction transaction;
 
+    /**
+     * Constructor of the dialog.
+     * Only runs the run() method after setting the default close operation.
+     * @param main main frame, parent of the dialog
+     * @param transaction transaction that is being edited
+     */
     public EditDialog(MainForm main, Transaction transaction) {
         super(main, "Upravit transakci", true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -25,6 +35,12 @@ public class EditDialog extends JDialog {
         run();
     }
 
+    /**
+     * Creates and displays the dialog frame.
+     * Dialog has two listeners on each of the buttons, one for adding the modified transaction,
+     * one for deleting it.
+     * All the input fields from AddDialog are present and prefilled with transaction details.
+     */
     private void run() {
         Container pane = getContentPane();
         pane.setLayout(new GridBagLayout());
@@ -127,6 +143,12 @@ public class EditDialog extends JDialog {
         pane.add(deleteButton, gbc);
 
         confirmButton.addMouseListener(new MouseAdapter() {
+            /**
+             * Mouse press listener on the confirm button.
+             * Just like with AddDialog, input fields are parsed after triggering, potential errors are shown.
+             * If provided information are correct, the old transaction is removed and new one is added.
+             * @param e the event to be processed
+             */
             @Override
             public void mousePressed(MouseEvent e) {
                 String name = nameField.getText();
@@ -167,6 +189,11 @@ public class EditDialog extends JDialog {
         });
 
         deleteButton.addMouseListener(new MouseAdapter() {
+            /**
+             * Mouse press listener on the delete button.
+             * After triggering, the transaction that is being edited is deleted.
+             * @param e the event to be processed
+             */
             @Override
             public void mousePressed(MouseEvent e) {
                 ExpenseTableModel tableModel = main.getExpenseView().getTableModel();
@@ -177,6 +204,7 @@ public class EditDialog extends JDialog {
         });
 
         pack();
+        //sets the location of the dialog to the center of the screen
         setLocationRelativeTo(null);
         setVisible(true);
     }

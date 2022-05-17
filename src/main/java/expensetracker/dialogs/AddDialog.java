@@ -12,8 +12,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 
+/**
+ * Dialog responsible for adding new transactions.
+ */
 public class AddDialog extends JDialog {
     MainForm main;
+
+    /**
+     * Constructor of the dialog.
+     * Only runs the run() method after setting the default close operation.
+     * @param main main frame, parent of the dialog
+     */
     public AddDialog(MainForm main) {
         super(main, "Přidat transakci", true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -21,13 +30,19 @@ public class AddDialog extends JDialog {
         run();
     }
 
+    /**
+     * Creates and displays the dialog frame.
+     * Dialog uses listener on the only button to create and add the transaction from provided information.
+     * There are four text fields for name, amount, date (all mandatory) and optional note.
+     * There is also a radio button that is used to indicate whether the transaction is an expense or income.
+     */
     private void run() {
         Container pane = getContentPane();
         pane.setLayout(new GridBagLayout());
-        setMinimumSize(new Dimension(170,0));
+        setMinimumSize(new Dimension(170, 0));
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(4,4,4,4);
+        gbc.insets = new Insets(4, 4, 4, 4);
         gbc.weightx = 1;
         gbc.weighty = 0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -67,7 +82,7 @@ public class AddDialog extends JDialog {
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 2;
-        JTextField dateField= new JTextField();
+        JTextField dateField = new JTextField();
         pane.add(dateField, gbc);
 
         ButtonGroup group = new ButtonGroup();
@@ -109,6 +124,13 @@ public class AddDialog extends JDialog {
         pane.add(confirmButton, gbc);
 
         confirmButton.addMouseListener(new MouseAdapter() {
+            /**
+             * Mouse press listener on the confirm button.
+             * After the event triggers, input fields are parsed.
+             * If there is any error during parsing, message dialog is shown to let the user know what went wrong.
+             * If all the information is correct, new transaction is created and added.
+             * @param e the event to be processed
+             */
             @Override
             public void mousePressed(MouseEvent e) {
                 String name = nameField.getText();
@@ -150,6 +172,7 @@ public class AddDialog extends JDialog {
         });
 
         pack();
+        //sets the position of the dialog to the center of the screen
         setLocationRelativeTo(null);
         setVisible(true);
     }

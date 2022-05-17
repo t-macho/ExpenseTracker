@@ -8,9 +8,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Static class responsible for saving transactions to "transactions.csv" file in the root directory.
+ * Saves data in "type[DELIM]name[DELIM]amount[DELIM]date[DELIM]note" format.
+ * DELIM is static field used as separator in the csv.
+ */
 public class Saver {
     public static final String DELIM = ",";
 
+    /**
+     * Saves transactions to "transactions.csv" in root directory.
+     * Saves data in "type[DELIM]name[DELIM]amount[DELIM]date[DELIM]note" format.
+     * @param tableModel TableModel from which the transactions are saved.
+     * @throws IOException
+     */
     public static void save(ExpenseTableModel tableModel) throws IOException {
         List<Transaction> transactions = tableModel.getTransactionList();
 

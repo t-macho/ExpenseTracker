@@ -3,6 +3,10 @@ package expensetracker.forms;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Main form.
+ * Contains all the other graphic parts - the table, action elements and overview panel.
+ */
 public class MainForm extends Frame{
     ExpenseView expenseView;
     ActionArea actionArea;
@@ -12,10 +16,17 @@ public class MainForm extends Frame{
         return expenseView;
     }
 
+    /**
+     * Constructs the GUI of the whole application.
+     */
     public MainForm() {
         createAndShowGUI();
     }
 
+    /**
+     * Method responsible for creating and showing the GUI.
+     * Creates all the main form parts and puts them together in GridBagLayout.
+     */
     public void createAndShowGUI() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Sledovač výdajů");

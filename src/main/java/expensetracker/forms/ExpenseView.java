@@ -10,6 +10,14 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Main part of the whole GUI.
+ * Table view of all the added transactions.
+ * Rows are conditionally filtered to show whether the transaction is an expense or income.
+ * Double-clicking a transaction opens EditDialog.
+ * The table can be sorted by clicking on the table's header.
+ * Table is scrollable.
+ */
 public class ExpenseView extends JPanel {
     MainForm main;
     Table table;
@@ -23,6 +31,12 @@ public class ExpenseView extends JPanel {
         return tableModel;
     }
 
+    /**
+     * Contructs the table's GUI.
+     * The table is placed into JScrollPane to make it scrollable.
+     * There is a listener on the whole table that after double-clicking a transaction opens an EditDialog.
+     * @param main main frame
+     */
     public ExpenseView(MainForm main) {
         this.main = main;
 

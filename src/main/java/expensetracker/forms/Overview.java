@@ -7,12 +7,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Part of the main form.
+ * Displays an overview of all the transactions, sum of incomes/expenses and overall balance.
+ */
 public class Overview extends JPanel {
     MainForm main;
     JLabel incomeNumLabel;
     JLabel expenseNumLabel;
     JLabel sumNumLabel;
 
+    /**
+     * Constructs the overview's GUI.
+     * Initially sets all numbers to 0.
+     * @param main main form
+     */
     public Overview(MainForm main) {
         this.main = main;
 
@@ -58,6 +67,10 @@ public class Overview extends JPanel {
         add(sumNumLabel, gbc);
     }
 
+    /**
+     * Updates the displayed values to correspond with transactions present in the table.
+     * Is called after adding and removing a transaction.
+     */
     public void update() {
         List<Transaction> transactionList = Overview.this.main.getExpenseView().getTableModel().getTransactionList();
 

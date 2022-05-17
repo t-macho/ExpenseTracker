@@ -17,6 +17,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Part of the main frame.
+ * Contains all the control elements, i.e. the add and save/load buttons and a combo box for selecting desired filter.
+ * There is a listener on each of the control elements.
+ */
 public class ActionArea extends JPanel {
 
     JButton addButton;
@@ -24,6 +29,13 @@ public class ActionArea extends JPanel {
     JButton loadButton;
     JComboBox<RowFilter> filterCombo;
 
+    /**
+     * Constructs the control area GUI.
+     * Also adds listeners to each of the elements - pressing the add buttons open the AddDialog,
+     * pressing save/load button saves/loads the transactions and selecting different filter in combo box
+     * updates the table's row filter accordingly.
+     * @param main main form
+     */
     public ActionArea(MainForm main) {
 
         setLayout(new GridBagLayout());
@@ -75,7 +87,7 @@ public class ActionArea extends JPanel {
                     Loader.load(main.getExpenseView().getTableModel());
                 } catch (FileNotFoundException ex) {
                     JOptionPane.showMessageDialog(main, "Soubor \"transactions.csv\" neexistuje.");
-                } catch (ParseException | NumberFormatException ex) {
+                } catch (ParseException | NumberFormatException | IOException ex) {
                     JOptionPane.showMessageDialog(main, "Soubor je poškozený.");
                 }
             }
