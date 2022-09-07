@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="springframework.security.spring.crypto" type="repository">
+    <properties maven-id="org.springframework.security:spring-security-crypto:5.7.2" />
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
