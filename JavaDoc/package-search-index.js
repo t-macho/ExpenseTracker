@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"expensetracker.accounts"},{"l":"expensetracker.dialogs"},{"l":"expensetracker.filters"},{"l":"expensetracker.forms"},{"l":"expensetracker.main"},{"l":"expensetracker.table"},{"l":"expensetracker.transactions"}];updateSearchResults();
