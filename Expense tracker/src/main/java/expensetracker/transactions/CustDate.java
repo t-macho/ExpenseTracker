@@ -78,29 +78,18 @@ public class CustDate implements Comparable<CustDate>{
     /**
      * Implementation of the Comparable interface.
      * Provides correct comparison of two dates.
-     * First the years are compared, then months and finally days.
      * Two dates are equal iff all parts are the same.
      * @param o the object to be compared.
-     * @return 1 if this > o, 0 if this == o, -1 if this < o
+     * @return >0 if this > o, 0 if this == o, < 0 if this < o
      */
     @Override
     public int compareTo(CustDate o) {
-        if (this.year > o.year) {
-            return 1;
-        } else {
-            if (this.month > o.month) {
-                return 1;
-            } else {
-                if (this.day > o.day) {
-                    return 1;
-                } else {
-                    if (this.day == o.day && this.month == o.month && this.year == o.year) {
-                        return 0;
-                    } else {
-                        return -1;
-                    }
-                }
-            }
+        if (this.year != o.year) {
+            return this.year - o.year;
         }
+        if (this.month != o.month) {
+            return this.month - o.month;
+        }
+        return this.day - o.day;
     }
 }
