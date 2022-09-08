@@ -3,8 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Expense_tracker_jar</output-path>
     <root id="archive" name="Expense tracker.jar">
       <element id="module-output" name="Expense tracker" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/spring-security-crypto-5.7.3.jar" path-in-jar="/" />
-      <element id="library" level="project" name="spring-security-crypto-5.7.3" />
     </root>
   </artifact>
 </component>
